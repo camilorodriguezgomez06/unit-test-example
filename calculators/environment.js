@@ -1,4 +1,4 @@
-
+import { dummyDataset } from "../database/dummyDataset"
 
 const tiMonth = (ipc) => {
     const ti = (((1+(((ipc)/100)))**(1/12))-1)
@@ -104,38 +104,37 @@ const annualSavings = (monthly_savings, ipc_data) => {
 }
 
 const youngTree = async (avoided_emissions) => {
-    const tree = ((avoided_emissions*1000)/('young_tree'))
+    const tree = ((avoided_emissions * 1000) / dummyDataset["young_tree"])
     return parseInt(tree)
 }
 
 const oldTree = async (avoided_emissions) => {
-    const tree = ((avoided_emissions*1000)/('old_tree'))
+    const tree = ((avoided_emissions * 1000) / dummyDataset["old_tree"])
     return parseInt(tree)
 }
 
 const energyH2Cylinders = async (nominal_energy) => {
-    const result = (nominal_energy/('cell_fuel_eficiency_factor'))
+    const result = (nominal_energy / dummyDataset["cell_fuel_eficiency_factor"])
     return result
 }
 
 const energyH2LowPresure = async (energy_H2_Cylinders) => {
-    const result = (energy_H2_Cylinders/('compresor_eficiency_factor'))
+    const result = (energy_H2_Cylinders / dummyDataset["compresor_eficiency_factor"])
     return result
 }
 
 const energyConsumed = async (energy_H2_Low_Presure) => {
-    const result = (energy_H2_Low_Presure/('electrolysis_eficiency_factor'))
+    const result = (energy_H2_Low_Presure / dummyDataset["electrolysis_eficiency_factor"])
     return result
 }
 
-
 const hydrogenMass = async (energy_H2_Low_Presure) => {
-    const result = (energy_H2_Low_Presure/('hydrogen_energy_density'))
+    const result = (energy_H2_Low_Presure / dummyDataset["hydrogen_energy_density"])
     return result
 }
 
 const litersRequired = async (hydrogen_mass) => {
-    const result = (hydrogen_mass*('water_h2_weight'))
+    const result = (hydrogen_mass * dummyDataset["water_h2_weight"])
     return result
 }
 
