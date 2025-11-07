@@ -1,4 +1,4 @@
-import { dummyDataset } from "../database/dummyDataset"
+const { dummyDataset } = require("../database/dummyDataset.js")
 
 const tiMonth = (ipc) => {
     const ti = (((1+(((ipc)/100)))**(1/12))-1)
@@ -104,37 +104,44 @@ const annualSavings = (monthly_savings, ipc_data) => {
 }
 
 const youngTree = async (avoided_emissions) => {
-    const tree = ((avoided_emissions * 1000) / dummyDataset["young_tree"])
+    const data = dummyDataset()
+    const tree = ((avoided_emissions * 1000) / data["young_tree"])
     return parseInt(tree)
 }
 
 const oldTree = async (avoided_emissions) => {
-    const tree = ((avoided_emissions * 1000) / dummyDataset["old_tree"])
+    const data = dummyDataset()
+    const tree = ((avoided_emissions * 1000) / data["old_tree"])
     return parseInt(tree)
 }
 
 const energyH2Cylinders = async (nominal_energy) => {
-    const result = (nominal_energy / dummyDataset["cell_fuel_eficiency_factor"])
+    const data = dummyDataset()
+    const result = (nominal_energy / data["cell_fuel_eficiency_factor"])
     return result
 }
 
 const energyH2LowPresure = async (energy_H2_Cylinders) => {
-    const result = (energy_H2_Cylinders / dummyDataset["compresor_eficiency_factor"])
+    const data = dummyDataset()
+    const result = (energy_H2_Cylinders / data["compresor_eficiency_factor"])
     return result
 }
 
 const energyConsumed = async (energy_H2_Low_Presure) => {
-    const result = (energy_H2_Low_Presure / dummyDataset["electrolysis_eficiency_factor"])
+    const data = dummyDataset()
+    const result = (energy_H2_Low_Presure / data["electrolysis_eficiency_factor"])
     return result
 }
 
 const hydrogenMass = async (energy_H2_Low_Presure) => {
-    const result = (energy_H2_Low_Presure / dummyDataset["hydrogen_energy_density"])
+    const data = dummyDataset()
+    const result = (energy_H2_Low_Presure / data["hydrogen_energy_density"])
     return result
 }
 
 const litersRequired = async (hydrogen_mass) => {
-    const result = (hydrogen_mass * dummyDataset["water_h2_weight"])
+    const data = dummyDataset()
+    const result = (hydrogen_mass * data["water_h2_weight"])
     return result
 }
 
